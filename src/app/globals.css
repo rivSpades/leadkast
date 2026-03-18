@@ -3,25 +3,83 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #1A1A2E;
+  --foreground: #F0F0F5;
+  --card: 220 20% 14%;
+  --card-foreground: 240 10% 95%;
+  --popover: 220 20% 12%;
+  --popover-foreground: 240 10% 95%;
+  --primary: 350 78% 60%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 220 20% 18%;
+  --secondary-foreground: 240 10% 90%;
+  --muted: 220 20% 20%;
+  --muted-foreground: 240 10% 60%;
+  --accent: 37 90% 55%;
+  --accent-foreground: 0 0% 10%;
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 0 0% 98%;
+  --border: 220 20% 22%;
+  --input: 220 20% 20%;
+  --ring: 350 78% 60%;
+  --radius: 0.5rem;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  border-color: hsl(var(--border));
 }
 
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Inter", sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Space Grotesk", sans-serif;
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
   }
+
+  .shimmer {
+    background: linear-gradient(
+      90deg,
+      hsl(var(--muted)) 25%,
+      hsl(var(--secondary)) 50%,
+      hsl(var(--muted)) 75%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite linear;
+  }
+
+  .gradient-brand {
+    background: linear-gradient(135deg, #E94560 0%, #F5A623 100%);
+  }
+
+  .gradient-text {
+    background: linear-gradient(135deg, #E94560 0%, #F5A623 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #1A1A2E;
+}
+::-webkit-scrollbar-thumb {
+  background: #E94560;
+  border-radius: 3px;
 }
